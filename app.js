@@ -35,6 +35,10 @@ app.use('/pay',payment)
 
 if(process.env.NODE_ENV = "production"){
   app.use(express.static("Frontend1/build"))
+  const path = require('path')
+  app.get('*',(req,res) => {
+    res.sendFile(path.resolve(__dirname,"Frontend1","build","index.html"))
+  })
 }
 //Try to include MVC
 app.listen(port,()=>{
